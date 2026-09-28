@@ -32,7 +32,22 @@ Click the gear icon next to the db name, then &quot;Domain names&quot;
 [[ There is a custom domain|There is a CNAME record / it&#39;s proxied]]
 [[There is no domain name]]</tw-passagedata><tw-passagedata pid="4" name="Page not found (browser error)" tags="" position="375,650" size="100,100">Check for a CNAME by entering the domain on &lt;a href=&quot;https://mxtoolbox.com&quot;&gt;MX Toolbox&lt;/a&gt; and selecting &quot;DNS&quot; or &quot;CNAME&quot;.
 
-If it doesn&#39;t appear, also check by typing `dig [database ur]l`in a terminal. If A records appear, it may be proxied, meaning the CNAME is there, not just visible to us.
+It should look something like this:
+
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Type&lt;/td&gt;
+&lt;td&gt;Domain Name&lt;/td&gt;
+&lt;td&gt;Canonical Name&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CNAME&lt;/td&gt;
+&lt;td&gt;www.example.com&lt;/td&gt;
+&lt;td&gt;example.odoo.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+If it doesn&#39;t appear, also check by typing &quot;`dig [database url]`&quot; in a terminal. If A records appear, it may be proxied, meaning the CNAME is there, not just visible to us.
 
 If you&#39;re uncertain, ask the customer for a screenshot of their domain configuration.
 
@@ -43,7 +58,9 @@ You can check by searching the Domain Registration project (&lt;a href=&quot;htt
 
 &#39;&#39;If it&#39;s granted by Odoo:&#39;&#39;
 
-The customer edited the DNS records, or the database was closed and reopened. It needs to be escalated to an admin with access to Gandi.
+Check if the customer has the domain set up in the database manager (&lt;a href=&quot;https://www.odoo.com/my/databases&quot;&gt;https://www.odoo.com/my/databases&lt;/a&gt;). They can find it under the gear icon, then &quot;Domain names&quot;.
+
+It&#39;s possible the customer edited the DNS records, or the database was closed and reopened. It may need to be escalated to an admin with access to Gandi.
 
 &#39;&#39;If it&#39;s third party:&#39;&#39;
 They need to configure a CNAME record. Refer the customer to the documentation (&lt;a href=&quot;https://www.odoo.com/documentation/19.0/applications/websites/website/configuration/domain_names.html#configure-an-existing-domain-name&quot;&gt;https://www.odoo.com/documentation/19.0/applications/websites/website/configuration/domain_names.html#configure-an-existing-domain-name&lt;/a&gt;) and to their domain provider for further assistance.</tw-passagedata><tw-passagedata pid="7" name="There is no domain name" tags="" position="550,675" size="100,100">The customer needs to add the domain to their DB:
@@ -152,14 +169,20 @@ Check automations linksed to model (Server actions, Automated actions). For help
 
 [[Found nothing (perf)]]</tw-passagedata><tw-passagedata pid="26" name="They already did this (domain)" tags="" position="125,700" size="100,100">If it was recently added, they need to wait a short while (up to an hour) before the SSL certificate is generated.
 
-If it&#39;s been more than a few hours, request a TLS refresh from a funtech in the &lt;a href=&quot;https://discord.com/channels/820925518995652619/1319395061968142346&quot;&gt;bu-funtech-requests Channel&lt;/a&gt;</tw-passagedata><tw-passagedata pid="27" name="There is a CNAME record / it&#39;s proxied" tags="" position="450,800" size="100,100">If the record was recently added, they may have to wait a few hours for it to propogate. You can check the propogation here: &lt;a href=&quot;https://dnschecker.org/&quot;&gt;https://dnschecker.org/&lt;/a&gt;
+If it&#39;s been more than a few hours:
+
+&#39;&#39;Odoo Online:&#39;&#39;
+Request a TLS refresh from a funtech in the &lt;a href=&quot;https://discord.com/channels/820925518995652619/1319395061968142346&quot;&gt;bu-funtech-requests Channel&lt;/a&gt;
+
+&#39;&#39;Odoo SH:&#39;&#39;
+The customer can initiate a TLS refresh in the SH Dashboard. It can be found under the branch settings. Under domains, click the &quot;i&quot; button next to the domain.</tw-passagedata><tw-passagedata pid="27" name="There is a CNAME record / it&#39;s proxied" tags="" position="450,800" size="100,100">If the record was recently added, they may have to wait a few hours for it to propogate. You can check the propogation here: &lt;a href=&quot;https://dnschecker.org/&quot;&gt;https://dnschecker.org/&lt;/a&gt;
 
 If it&#39;s been some time, check &lt;a href=&quot;https://wheregoes.com/&quot;&gt;where goes&lt;/a&gt; to see if there&#39;s any other incorrect behavior.</tw-passagedata><tw-passagedata pid="28" name="Odoo.SH issue" tags="" position="1450,350" size="100,100">What is the SH issue?
 
 [[Customer wants to change the GitHub repo connected to their project]]
 [[A staging branch expired, and the customer wants a backup]]</tw-passagedata><tw-passagedata pid="29" name="Customer wants to change the GitHub repo connected to their project" tags="" position="1450,475" size="100,100">To connect a new GitHub repository, a new SH project needs to be created, and the existing ones needs to be deleted.
 
-This is a limitation of the SH platform - only oe GitHub repository can be linked to a project.</tw-passagedata><tw-passagedata pid="30" name="A staging branch expired, and the customer wants a backup" tags="" position="1575,475" size="100,100">Staging branches are *not* backed up, and *cannot* be recovered.
+This is a limitation of the SH platform - only one GitHub repository can be linked to a project.</tw-passagedata><tw-passagedata pid="30" name="A staging branch expired, and the customer wants a backup" tags="" position="1575,475" size="100,100">Staging branches are *not* backed up, and *cannot* be recovered.
 
 They are not meant for use with actual impotant data. They are only for development.
 
